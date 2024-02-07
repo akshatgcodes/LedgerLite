@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - LedgerLite{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p class="muted">{{ month_name }} &middot; logged in as {{ user.username }}</p>
+
+<div class="roast-card">
+  <span class="roast-label">This month's roast</span>
+  <p class="roast-text">{{ roast }}</p>
+</div>
+
+<div class="card">
+  <h2>Spending by category</h2>
+  <p class="muted">Total spent this month: <strong>₹{{ "%.2f"|format(total_spent) }}</strong></p>
+
+  {% if breakdown %}
+  <table class="breakdown-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Spent</th>
+        <th>Budget cap</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in breakdown %}
+      <tr class="{{ 'over-budget' if row.over_amount else '' }}">
+        <td>{{ row.category }}</td>
+        <td>₹{{ "%.2f"|format(row.spent) }}</td>
+        <td>{% if row.cap is not none %}₹{{ "%.2f"|format(row.cap) }}{% else %}<span class="muted">no cap set</span>{% endif %}</td>
+        <td>
+          {% if row.over_amount %}
+            <span class="badge badge-danger">Over by ₹{{ "%.2f"|format(row.over_amount) }}</span>
+          {% elif row.cap is not none %}
+            <span class="badge badge-ok">{{ "%.0f"|format(row.pct_of_cap) }}% of cap</span>
+          {% else %}
+            <span class="muted">&mdash;</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No expenses logged yet this month. <a href="{{ url_for('add_expense') }}">Add one</a>.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Recent expenses</h2>
+  {% if recent_expenses %}
+  <table class="breakdown-table">
+    <thead><tr><th>Date</th><th>Category</th><th>Amount</th><th>Note</th></tr></thead>
+    <tbody>
+      {% for e in recent_expenses %}
+      <tr>
+        <td>{{ e.date.isoformat() }}</td>
+        <td>{{ e.category }}</td>
+        <td>₹{{ "%.2f"|format(e.amount) }}</td>
+        <td>{{ e.note or "" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">Nothing here yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

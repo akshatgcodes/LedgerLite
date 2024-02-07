@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Add Expense - LedgerLite{% endblock %}
+{% block content %}
+<h1>Add expense</h1>
+<form method="post" class="card form">
+  <label>Amount (₹)
+    <input type="text" name="amount" value="{{ form.amount }}" required placeholder="e.g. 450.00" autofocus>
+  </label>
+  <label>Category
+    <select name="category" required>
+      <option value="" disabled {{ "selected" if not form.category else "" }}>Choose a category</option>
+      {% for c in categories %}
+        <option value="{{ c }}" {{ "selected" if form.category == c else "" }}>{{ c }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Date
+    <input type="date" name="date" value="{{ form.date }}" required>
+  </label>
+  <label>Note (optional)
+    <input type="text" name="note" value="{{ form.note }}" maxlength="255">
+  </label>
+  <button type="submit">Add expense</button>
+</form>
+{% endblock %}
