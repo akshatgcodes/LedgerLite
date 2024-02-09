@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Budgets - LedgerLite{% endblock %}
+{% block content %}
+<h1>Monthly budget caps</h1>
+<p class="muted">Set a monthly spending cap per category. Exceeding it highlights that category in red on your dashboard.</p>
+
+<form method="post" class="card form">
+  <label>Category
+    <select name="category" required>
+      <option value="" disabled selected>Choose a category</option>
+      {% for c in categories %}
+        <option value="{{ c }}">{{ c }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Monthly cap (₹)
+    <input type="text" name="monthly_cap" required placeholder="e.g. 5000.00">
+  </label>
+  <button type="submit">Save cap</button>
+</form>
+
+<div class="card">
+  <h2>Current caps</h2>
+  {% if existing_budgets %}
+  <table class="breakdown-table">
+    <thead><tr><th>Category</th><th>Monthly cap</th><th></th></tr></thead>
+    <tbody>
+      {% for cat, b in existing_budgets.items() %}
+      <tr>
+        <td>{{ cat }}</td>
+        <td>₹{{ "%.2f"|format(b.monthly_cap) }}</td>
+        <td>
+          <form method="post" action="{{ url_for('delete_budget', budget_id=b.id) }}" onsubmit="return confirm('Remove this budget cap?');">
+            <button type="submit" class="link-button">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No budget caps set yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
