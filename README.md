@@ -92,3 +92,7 @@ Open `http://localhost:5000`, register an account, and start logging expenses.
 3. **Set budget caps** — on the Budgets page, set a ₹ monthly cap per category.
 4. **Dashboard** — see this month's totals by category, red-highlighted rows for any category over its cap (with the exact overage amount), and your monthly roast.
 5. **Export CSV** — anytime, from the nav bar or the Expenses page; downloads only your own expenses.
+
+## Notes
+
+Built as a focused, single-purpose tool - a multi-user expense tracker, nothing more, nothing less.
