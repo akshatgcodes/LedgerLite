@@ -96,3 +96,7 @@ Open `http://localhost:5000`, register an account, and start logging expenses.
 ## Notes
 
 Built as a focused, single-purpose tool - a multi-user expense tracker, nothing more, nothing less.
+
+## Troubleshooting
+
+If something doesn't run as expected, double-check you're using the dependency versions noted above and running the exact commands from the "Run it" section.
