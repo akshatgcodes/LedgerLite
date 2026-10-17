@@ -75,7 +75,7 @@ export default function Home() {
               Run it
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/akshatgcodes/LedgerLite"
               className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 font-medium text-foreground transition hover:border-accent hover:text-accent"
             >
               <GitHubIcon className="h-4 w-4" />
@@ -103,7 +103,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/akshatgcodes/LedgerLite"
                 className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-2"
               >
                 <GitHubIcon className="h-4 w-4" />
@@ -345,7 +345,7 @@ flask run
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-3 px-6 py-8 text-xs text-muted sm:flex-row">
           <span>LedgerLite · licensed under GPLv3</span>
           <a
-            href="https://github.com"
+            href="https://github.com/akshatgcodes/LedgerLite"
             className="inline-flex items-center gap-1.5 hover:text-foreground"
           >
             <GitHubIcon className="h-3.5 w-3.5" />
