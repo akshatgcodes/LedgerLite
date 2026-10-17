@@ -4,6 +4,13 @@ All notable changes to **LedgerLite** are documented here.
 
 ---
 
+## [1.0.1] — 2026-10-18
+
+### 🐛 Fixed
+- Registering with a password longer than 72 bytes now shows a clear error instead of a server error (bcrypt 5 no longer truncates)
+
+---
+
 ## [1.0.0] — 2026-10-18
 
 ### ✨ Added
@@ -22,6 +29,7 @@ All notable changes to **LedgerLite** are documented here.
 
 ---
 
+[1.0.1]: https://github.com/akshatgcodes/LedgerLite/releases/tag/v1.0.1
 [1.0.0]: https://github.com/akshatgcodes/LedgerLite/releases/tag/v1.0.0
 
 ---
