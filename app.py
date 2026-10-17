@@ -157,6 +157,9 @@ def register_routes(app):
                 errors.append("Please enter a valid email address.")
             if len(password) < 6:
                 errors.append("Password must be at least 6 characters.")
+            # bcrypt only hashes the first 72 bytes; bcrypt 5+ raises instead of truncating.
+            if len(password.encode("utf-8")) > 72:
+                errors.append("Password must be at most 72 bytes.")
             if password != confirm:
                 errors.append("Passwords do not match.")
             if errors:
