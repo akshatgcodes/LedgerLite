@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "builds": [
+    { "src": "app.py", "use": "@vercel/python" },
+    { "src": "landing/package.json", "use": "@vercel/static-build", "config": { "distDir": "out" } },
+    { "src": "static/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/landing/index.html" },
+    { "src": "/_next/(.*)", "dest": "/landing/_next/$1" },
+    { "src": "/favicon.ico", "dest": "/landing/favicon.ico" },
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)", "dest": "/app.py" }
+  ]
+}
