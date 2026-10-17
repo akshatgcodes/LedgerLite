@@ -22,6 +22,10 @@ def _normalize_db_url(url: str) -> str:
     # Heroku-style postgres:// URLs need to be rewritten for SQLAlchemy 1.4+/psycopg2
     if url.startswith("postgres://"):
         url = url.replace("postgres://", "postgresql://", 1)
+    # Pin the psycopg2 driver (the one in requirements.txt); newer SQLAlchemy
+    # otherwise defaults plain postgresql:// URLs to psycopg 3.
+    if url.startswith("postgresql://"):
+        url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
     return url
 
 
