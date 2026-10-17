@@ -10,3 +10,8 @@ venv/
 .DS_Store
 .vercel
 .env*
+
+# Env files (keep the example)
+.env.local
+.env.*.local
+!.env.example
