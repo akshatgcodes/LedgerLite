@@ -57,7 +57,7 @@ Most expense trackers stop at a pie chart. You can see that Food was the biggest
 
 ### 6.1 Auth
 
-- Registration requires a username of 3+ characters, a valid email and a password of 6+ characters, entered twice.
+- Registration requires a username of 3+ characters, a valid email and a password of 6 characters to 72 bytes (bcrypt's limit), entered twice.
 - Usernames and emails are unique.
 - Passwords are stored as bcrypt hashes only.
 - Every page except register and login redirects to login when there's no session.
